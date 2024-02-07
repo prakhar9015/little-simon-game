@@ -74,6 +74,9 @@ function update_level(){  // if user_array == computer_array (increase level, pi
     // console.log("update level has been called...")
     user = []
     $(".container .btn").removeClass("btn-disabled-style")
+
+    $("#start-btn").prop("disabled", true);
+
 }
 
 
@@ -89,12 +92,17 @@ function end_game_work(){  // end the game when patterns are incorrect
     $(".container .btn").addClass("btn-disabled-style")
 
     console.log("click event listener turned off")
-    $("h1").text("Game Over.press any key to restart.")
+    $("h1").text("Game Over. Click on start to restart.")
     // turn on red animation light and sound
     computer = []
     user = []
     current_level = 1
-    $(document).on("keydown", keydownHandler)
+    // $(document).on("keydown", keydownHandler)
+    $("#start-btn").prop("disabled", false);
+
+    $("#start-btn").on("click", keydownHandler)
+    $("i").addClass("fa-bounce ")
+
 }
 
 
@@ -134,10 +142,18 @@ $(".container .btn").addClass("btn-disabled-style") // add the btn-disabled-clas
 
 const keydownHandler = () => {  // what to do when the game starts
     is_game_start = true
+
+    $("#start-btn").off("click")
+    $("i").removeClass("fa-bounce ")
+
+
     $(".container .btn").removeClass("btn-disabled-style")
     update_level()
     addBtnClick_check()
+
 }
 
-$(document).on("keydown", keydownHandler)  // In beginning, start listening for keyboard strokes
+// $(document).on("keydown", keydownHandler)  // In beginning, start listening for keyboard strokes
+
+$("#start-btn").on("click", keydownHandler)
 
