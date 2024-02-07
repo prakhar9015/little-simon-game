@@ -3,6 +3,14 @@ body {
   background-color: #011F3F;
 }
 
+
+#img-value {
+  position: absolute;
+  left: 75%;
+  top: 10rem;
+  width: 290px;
+}
+
 #start-btn {
   position: absolute;
   right: 80%;
@@ -16,6 +24,7 @@ body {
 	font-weight: bold;
 	border: none;
 	border-radius: 10px;
+  font-family: cursive;
 }
 
 #start-btn:hover {

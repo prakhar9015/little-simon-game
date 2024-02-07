@@ -3,10 +3,18 @@ is_game_start = false
 let user = []
 let computer = []
 
+
+
+let img_list = ["alladin.webp", "brave.jpg", "chin-up.jpg", "lion-king.png", "nemo.jpg", "try-harder.jpg"]
+
+function randomisation(data_list){
+    
+    let random_img = Math.floor(Math.random() * data_list.length)
+    return data_list[random_img]
+}
+
 // Add the method of High Score ... while only eqach rounds... of wrong game...
-
 // can also make it add a backend technology or "LocalStorage" of browser to store user's Highest score... ???
-
 // How to rain confetti after each successfull submission...
 
 function addBtnClick_check(){
@@ -19,7 +27,6 @@ function addBtnClick_check(){
         user.push(btn_clicked_id)
         // console.log(`USER ARRAY: 👉 ${user}`)
         check_pattern()
-        // as soon as the user has started to click the buttons... start checking 
     })
 }
 
@@ -30,7 +37,7 @@ function play_music_animation_btn(songName){  // play song functionality (built-
     $(`#${songName}`).addClass("pressed")
     setTimeout(()=> {
         $(`#${songName}`).removeClass("pressed")
-    }, 200) // remove the class after 150 ms
+    }, 200)
 
 }
 
@@ -62,10 +69,7 @@ function choose_random_btn(){  // computer choosing a random btn
 
     setTimeout(()=> {
         for_auto_btn_clicks(random_btn)
-    }, 370)
-
-    // $("span").css("display", "block")
-
+    }, 650)
 
     computer.push(random_btn)
     console.log(`COMPUTER ARRAY: ➡️ ${computer}`)
@@ -79,9 +83,6 @@ function update_level(){  // if user_array == computer_array (increase level, pi
     // console.log("update level has been called...")
     user = []
     $(".container .btn").removeClass("btn-disabled-style")
-
-    $("#start-btn").prop("disabled", true);
-
 }
 
 
@@ -97,18 +98,24 @@ function end_game_work(){  // end the game when patterns are incorrect
     $(".container .btn").addClass("btn-disabled-style")
 
     console.log("click event listener turned off")
-    $("h1").text("Game Over. Click on start to restart.")
-    // turn on red animation light and sound
+    $("h1").text("Game Over.😔")
     computer = []
     user = []
-    current_level = 1
-    // $(document).on("keydown", keydownHandler)
-    $("#start-btn").prop("disabled", false);
+    current_level = 1 
 
-    $("#start-btn").on("click", keydownHandler)
-    $("i").addClass("fa-bounce ")
+    $("#start-btn").html("Try again <i class='fa-solid fa-bounce fa-lg'>🚀</i>")
+
+    $("#img-value").attr("src", `images/${randomisation(img_list)}`)
+
+    setTimeout(()=>{
+        $("#start-btn").fadeIn()
+        $("#img-value").slideDown()
+    }, 350)
+
+    // $(document).on("keydown", keydownHandler)
 
 }
+
 
 
 // as soon as the user has started to click the buttons... start checking 
@@ -146,15 +153,18 @@ function check_pattern(){
 $(".container .btn").addClass("btn-disabled-style") // add the btn-disabled-class
 
 const keydownHandler = () => {  // what to do when the game starts
-    is_game_start = true
 
-    $("#start-btn").off("click")
-    $("i").removeClass("fa-bounce ")
+    setTimeout(()=> {
+        $("#start-btn").fadeOut()
+        $("#img-value").slideUp()
+    }, 500)
 
-
-    $(".container .btn").removeClass("btn-disabled-style")
-    update_level()
-    addBtnClick_check()
+    setTimeout(()=>{
+        is_game_start = true
+        $(".container .btn").removeClass("btn-disabled-style")
+        update_level()
+        addBtnClick_check()
+    }, 700)
 
 }
 
