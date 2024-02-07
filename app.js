@@ -3,6 +3,11 @@ is_game_start = false
 let user = []
 let computer = []
 
+// Add the method of High Score ... while only eqach rounds... of wrong game...
+
+// can also make it add a backend technology or "LocalStorage" of browser to store user's Highest score... ???
+
+// How to rain confetti after each successfull submission...
 
 function addBtnClick_check(){
 
