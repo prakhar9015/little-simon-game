@@ -98,7 +98,7 @@ function end_game_work(){  // end the game when patterns are incorrect
     $(".container .btn").addClass("btn-disabled-style")
 
     console.log("click event listener turned off")
-    $("h1").text("Game Over.😔")
+    $("h1").text("Game Over. Try again!♾️")
     computer = []
     user = []
     current_level = 1 
