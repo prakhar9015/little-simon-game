@@ -122,7 +122,7 @@ function end_game_work(){  // end the game when patterns are incorrect
     console.log(`Current_level AFTER: ${current_level}`)
     console.log(`max_score AFTER: ${max_score}`)
 
-    $("#high_score_div").html(`<h2>High Score:  ${max_score}</h2>`)
+    $("#high_score_div").html(`<h2>Highest Level:  ${max_score}</h2>`)
 
     computer = []
     user = []
@@ -176,7 +176,7 @@ function check_pattern(){
 
 
 $(".container .btn").addClass("btn-disabled-style") // add the btn-disabled-class
-$("#high_score_div").html(`<h2>High Score: 0</h2>`)
+$("#high_score_div").html(`<h2>Highest Level: 0</h2>`)
 
 const keydownHandler = () => {  // what to do when the game starts
 
