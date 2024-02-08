@@ -3,12 +3,11 @@ let user = []
 let computer = []
 let max_score = 0;  // don't touch this variable again ever...
 
-// Don't take the help of chatGPT, use your own brain and debugging skills...
-
-
 function set_high_score(maxScore, currentScore){
     if (maxScore < currentScore){
         maxScore = currentScore
+        // #congratulate_winner
+        // $("#congratulate_winner").html("<h2>congratulations! 🎉 New highest record! 🥳</h2>")
     } 
     return maxScore;
 }
@@ -54,11 +53,6 @@ function for_auto_btn_clicks(songName){
     var song = new Audio(`sounds/${songName}.mp3`)
     song.play()
     $(`#${songName}`).addClass("auto-btn")
-
-    // if (current_level  > 1){
-    //     $("#level-title").append("<span class='level-plus-big '>+</span>")
-    //     $("#level-title").append("<span class='level-plus-little'>+</span>")
-    // }
     
     setTimeout(()=> {
         $(`#${songName}`).removeClass("auto-btn")
@@ -75,6 +69,8 @@ function choose_random_btn(){  // computer choosing a random btn
 
     let random_btn = btn_list[random_choice]
 
+    $("#congratulate_winner").remove()
+
     setTimeout(()=> {
         $("h1").text(`Level ${current_level}`)
         for_auto_btn_clicks(random_btn)
@@ -86,17 +82,11 @@ function choose_random_btn(){  // computer choosing a random btn
 
 
 function update_level(){  // if user_array == computer_array (increase level, pick a random btn)
-
-    // setTimeout(()=> {
-        // $("h1").text(`Level ${current_level}`)
-    // }, 600)
-
     if (current_level > 1){
         $("#level-title").append("<span class='level-plus-big '>+</span>")
         $("#level-title").append("<span class='level-plus-little'>+</span>")
     }
     
-
     choose_random_btn()
     $(document).off("keydown")
     user = []
@@ -110,14 +100,30 @@ function end_game_work(){  // end the game when patterns are incorrect
     $("body").addClass("game-over")
     setTimeout(()=> {
         $("body").removeClass("game-over")
-    }, 850)
+    }, 870)
 
     play_music_animation_btn("wrong");
     $(".container .btn").addClass("btn-disabled-style")
 
-    $("#high_score_div").html(`<h2>High Score: ${set_high_score(max_score, current_level)}</h2>`)
-
     $("h1").text("Game Over. Try again! ♾️")
+
+    // before updating max_score
+    if (current_level > max_score){
+        $("#congratulate_winner").html("<h2>congratulations! 🎉 New highest record! 🥳</h2>")
+        console.log("CONGRATULATIONS 🎉🎉🎉🎉") // This code runs, but problem is in display
+    }
+
+    console.log(`Current_level BEFORE: ${current_level}`)
+    console.log(`max_score BEFORE: ${max_score}`)
+
+    // Update the max_score variable using the set_high_score function
+    max_score = set_high_score(max_score, current_level);
+
+    console.log(`Current_level AFTER: ${current_level}`)
+    console.log(`max_score AFTER: ${max_score}`)
+
+    $("#high_score_div").html(`<h2>High Score:  ${max_score}</h2>`)
+
     computer = []
     user = []
     current_level = 1 
@@ -132,6 +138,10 @@ function end_game_work(){  // end the game when patterns are incorrect
     }, 380)
 
 }
+
+
+
+
 
 
 
@@ -172,6 +182,7 @@ const keydownHandler = () => {  // what to do when the game starts
 
     setTimeout(()=> {
         $("#start-btn").fadeOut()
+        // $("#start-btn").off("click")
         $("#img-value").slideUp()
     }, 500)
 
@@ -183,4 +194,4 @@ const keydownHandler = () => {  // what to do when the game starts
 }
 
 $("#start-btn").on("click", keydownHandler)
-
+// $("#congratulate_winner").html("<h2>congratulations! 🎉 New highest record! 🥳</h2>")
