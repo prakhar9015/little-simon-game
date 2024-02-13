@@ -32,6 +32,10 @@ function addBtnClick_check(){
 
         let btn_clicked_id = event.target.id
         play_music_animation_btn(btn_clicked_id)
+        // if (computer.length >= user.length){
+        //     user.push(btn_clicked_id)
+        // }  
+
         user.push(btn_clicked_id)
         check_pattern()
     })
@@ -44,7 +48,7 @@ function play_music_animation_btn(songName){  // play song functionality (built-
     $(`#${songName}`).addClass("pressed")
     setTimeout(()=> {
         $(`#${songName}`).removeClass("pressed")
-    }, 180)
+    }, 180) // after 180 milli seconds, pressed class will be removed.
 
 }
 
@@ -69,7 +73,7 @@ function choose_random_btn(){  // computer choosing a random btn
 
     let random_btn = btn_list[random_choice]
 
-    $("#congratulate_winner").remove()
+    // $("#congratulate_winner").remove()
 
     setTimeout(()=> {
         $("h1").text(`Level ${current_level}`)
@@ -88,9 +92,10 @@ function update_level(){  // if user_array == computer_array (increase level, pi
     }
     
     choose_random_btn()
-    $(document).off("keydown")
+    // $(document).off("keydown")
     user = []
     $(".container .btn").removeClass("btn-disabled-style")
+    // $(".container .btn").on("click", addBtnClick_check)
 }
 
 
@@ -108,19 +113,19 @@ function end_game_work(){  // end the game when patterns are incorrect
     $("h1").text("Game Over. Try again! ♾️")
 
     // before updating max_score
-    if (current_level > max_score){
-        $("#congratulate_winner").html("<h2>congratulations! 🎉 New highest record! 🥳</h2>")
-        console.log("CONGRATULATIONS 🎉🎉🎉🎉") // This code runs, but problem is in display
-    }
+    // if (current_level > max_score){
+    //     $("#congratulate_winner").html("<h2>congratulations! 🎉 New highest record! 🥳</h2>")
+    //     console.log("CONGRATULATIONS 🎉🎉🎉🎉") // This code runs, but problem is in display
+    // }
 
-    console.log(`Current_level BEFORE: ${current_level}`)
-    console.log(`max_score BEFORE: ${max_score}`)
+    // console.log(`Current_level BEFORE: ${current_level}`)
+    // console.log(`max_score BEFORE: ${max_score}`)
 
     // Update the max_score variable using the set_high_score function
     max_score = set_high_score(max_score, current_level);
 
-    console.log(`Current_level AFTER: ${current_level}`)
-    console.log(`max_score AFTER: ${max_score}`)
+    // console.log(`Current_level AFTER: ${current_level}`)
+    // console.log(`max_score AFTER: ${max_score}`)
 
     $("#high_score_div").html(`<h2>Highest Level:  ${max_score}</h2>`)
 
@@ -138,11 +143,6 @@ function end_game_work(){  // end the game when patterns are incorrect
     }, 380)
 
 }
-
-
-
-
-
 
 
 // as soon as the user has started to click the buttons... start checking 
@@ -166,6 +166,8 @@ function check_pattern(){
 
     if (is_pattern_correct == true && computer.length == user.length){
         current_level++;
+        // $(".container .btn").off("click")
+        // $(".container .btn").removeClass("btn-disabled-style")
         update_level()
     }
 }
