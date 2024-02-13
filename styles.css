@@ -4,7 +4,6 @@ body {
 }
 
 
-
 #img-value {
   position: absolute;
   left: 75%;
@@ -14,7 +13,7 @@ body {
 
 #congratulate_winner {
   position: absolute;
-  right: 68%;
+  right: 67%;
   top: 7rem;
   color:#F806CC;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif

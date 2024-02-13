@@ -12,9 +12,6 @@ function set_high_score(maxScore, currentScore){
     if (maxScore < currentScore){
         maxScore = currentScore
         localStorage.setItem("max_level", maxScore)
-        // $("#congratulate_winner").text(`congratulations! 🎉 New highest record 🍾\n
-        // keep going ${player_nameFromLocalStorage} !
-        // `)
     } 
     return maxScore;
 }
@@ -23,7 +20,7 @@ function set_high_score(maxScore, currentScore){
 let img_list = ["alladin.webp", "brave.jpg", "chin-up.jpg", "lion-king.png", "nemo.jpg", "try-harder.jpg"]
 
 function randomisation(data_list){
-    
+
     let random_img = Math.floor(Math.random() * data_list.length)
     return data_list[random_img]
 }
@@ -36,10 +33,6 @@ function addBtnClick_check(){
 
         let btn_clicked_id = event.target.id
         play_music_animation_btn(btn_clicked_id)
-        // if (computer.length >= user.length){
-        //     user.push(btn_clicked_id)
-        // }  
-
         user.push(btn_clicked_id)
         check_pattern()
     })
@@ -53,7 +46,6 @@ function play_music_animation_btn(songName){  // play song functionality (built-
     setTimeout(()=> {
         $(`#${songName}`).removeClass("pressed")
     }, 180)
-
 }
 
 
@@ -67,7 +59,6 @@ function for_auto_btn_clicks(songName){
         $(`#${songName}`).removeClass("auto-btn")
         $("span").remove()
     }, 485)
-
 }
 
 
@@ -77,8 +68,6 @@ function choose_random_btn(){  // computer choosing a random btn
     let random_choice = Math.floor(Math.random() * btn_list.length)
 
     let random_btn = btn_list[random_choice]
-
-    // $("#congratulate_winner").remove()
 
     setTimeout(()=> {
         $("h1").text(`Level ${current_level}`)
@@ -96,13 +85,16 @@ function update_level(){  // if user_array == computer_array (increase level, pi
         $("#level-title").append("<span class='level-plus-little'>+</span>")
     }
     
-    // $("#congratulate_winner").remove()
+    
+    if (current_level > max_score){
+        $("#congratulate_winner").text(``)
+    }
+
     $("#congratulate_winner").text(``)
     choose_random_btn()
     $(document).off("keydown")
     user = []
     $(".container .btn").removeClass("btn-disabled-style")
-    // $(".container .btn").on("click", addBtnClick_check)
 }
 
 
@@ -121,18 +113,13 @@ function end_game_work(){  // end the game when patterns are incorrect
 
     // before updating max_score
     if (current_level > max_score){
-        $("#congratulate_winner").html("<h2>congratulations! 🎉 New highest record! 🥳</h2>")
-        console.log("CONGRATULATIONS 🎉🎉🎉🎉") // This code runs, but problem is in display
+        $("#congratulate_winner").text(`congratulations! 🎉 New highest record 🍾 \n
+        keep going ${player_nameFromLocalStorage} !
+        `)
     }
-
-    // console.log(`Current_level BEFORE: ${current_level}`)
-    // console.log(`max_score BEFORE: ${max_score}`)
 
     // Update the max_score variable using the set_high_score function
     max_score = set_high_score(max_score, current_level);
-
-    // console.log(`Current_level AFTER: ${current_level}`)
-    // console.log(`max_score AFTER: ${max_score}`)
 
     $("#high_score_div").html(`<h2>Highest Level:  ${max_score}</h2>`)
 
@@ -149,11 +136,6 @@ function end_game_work(){  // end the game when patterns are incorrect
         $("#img-value").slideDown()
     }, 380)
 }
-
-
-
-
-
 
 
 // as soon as the user has started to click the buttons... start checking 
@@ -177,14 +159,11 @@ function check_pattern(){
 
     if (is_pattern_correct == true && computer.length == user.length){
         current_level++;
-        // $(".container .btn").off("click")
-        // $(".container .btn").removeClass("btn-disabled-style")
         update_level()
     }
     
 }
         
-
 
 // -------- Real flow of game starts here ----------
 
@@ -208,13 +187,8 @@ const keydownHandler = () => {  // what to do when the game starts
     }, 700)
 }
 
-// $("#start-btn").on("click", keydownHandler)
-
-
 let player_nameFromLocalStorage = localStorage.getItem("player_name")
 console.log(`player_nameFromLocalStorage: ${player_nameFromLocalStorage}`)
-
-
 
 
 if (!player_nameFromLocalStorage){
@@ -262,7 +236,6 @@ function welcome_user(player){
     $("#user_name").html(`<h2>${player}'s</h2>`)
 }
 
-// Also set highest score in `LOCALSTORAGE`
 
 // $("#congratulate_winner").text(`congratulations! 🎉 New highest record 🍾\n
 // keep going ${player_nameFromLocalStorage} !
