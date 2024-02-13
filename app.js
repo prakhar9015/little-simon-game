@@ -119,6 +119,14 @@ function end_game_work(){  // end the game when patterns are incorrect
         $("#congratulate_winner").text(`congratulations! 🎉 New highest record 🍾 \n
         keep going ${player_nameFromLocalStorage} !
         `)
+    }else if (current_level == max_score){
+        $("#congratulate_winner").text(` Hey ${player_nameFromLocalStorage}, you almost made it !
+        Try again. you're gonna make a new record ! ✨
+        `)
+    }else {
+        $("#congratulate_winner").text(` ${player_nameFromLocalStorage}, you're just ${max_score-current_level} 
+        points away. Work hard ! 💪
+        `)
     }
 
     // Update the max_score variable using the set_high_score function
