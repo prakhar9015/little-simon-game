@@ -114,7 +114,8 @@ function end_game_work(){  // end the game when patterns are incorrect
 
     $("#current_score_div").text(`Current level: ${current_level}`)
 
-    // before updating max_score
+    // made this feedback message more dynamic... and encouraging!
+
     if (current_level > max_score){
         $("#congratulate_winner").text(`congratulations! 🎉 New highest record 🍾 \n
         keep going ${player_nameFromLocalStorage} !
@@ -124,7 +125,7 @@ function end_game_work(){  // end the game when patterns are incorrect
         Try again. you're gonna make a new record ! ✨
         `)
     }else {
-        $("#congratulate_winner").text(` ${player_nameFromLocalStorage}, you're just ${max_score-current_level} 
+        $("#congratulate_winner").text(`Hey ${player_nameFromLocalStorage}, you're just ${max_score-current_level} 
         points away. Work hard ! 💪
         `)
     }
