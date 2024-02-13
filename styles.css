@@ -13,8 +13,8 @@ body {
 
 #congratulate_winner {
   position: absolute;
-  right: 67%;
-  top: 7rem;
+  right: 66%;
+  top: 10rem;
   color:#F806CC;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
@@ -23,24 +23,34 @@ body {
   color: #9400FF;
   position: absolute;
   right: 80%;
-  top: 13.5rem;
+  top: 18.5rem;
   font: bold;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
-
 #high_score_div {
   position: absolute;
   right: 80%;
-  top: 16rem;
+  top: 21rem;
   color: #fff;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-#start-btn {
+#current_score_div {
   position: absolute;
   right: 80%;
-  top: 24.5rem;
+  top: 24rem;
+  color: #fff;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #ED50F1;
+  /*  */
+}
+
+
+#start-btn {
+  position: absolute;
+  right: 82%;
+  top: 30rem;
   
 	/* box-shadow: 0 0 15px 0 #f273e6; */
 	background-color: whitesmoke;

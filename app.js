@@ -90,6 +90,7 @@ function update_level(){  // if user_array == computer_array (increase level, pi
         $("#congratulate_winner").text(``)
     }
 
+    $("#current_score_div").text(``)
     $("#congratulate_winner").text(``)
     choose_random_btn()
     $(document).off("keydown")
@@ -110,6 +111,8 @@ function end_game_work(){  // end the game when patterns are incorrect
     $(".container .btn").addClass("btn-disabled-style")
 
     $("h1").text("Game Over. Try again! ♾️")
+
+    $("#current_score_div").text(`Current level: ${current_level}`)
 
     // before updating max_score
     if (current_level > max_score){
