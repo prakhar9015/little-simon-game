@@ -1,13 +1,20 @@
+// How to rain confetti after each successfull submission...
+
+
 let current_level = 1
 let user = []
 let computer = []
-let max_score = 0;  // don't touch this variable again ever...
+// let max_score = 0;  // don't touch this variable again ever...
+
+let max_score = Number(localStorage.getItem("max_level"))
 
 function set_high_score(maxScore, currentScore){
     if (maxScore < currentScore){
         maxScore = currentScore
-        // #congratulate_winner
-        // $("#congratulate_winner").html("<h2>congratulations! 🎉 New highest record! 🥳</h2>")
+        localStorage.setItem("max_level", maxScore)
+        // $("#congratulate_winner").text(`congratulations! 🎉 New highest record 🍾\n
+        // keep going ${player_nameFromLocalStorage} !
+        // `)
     } 
     return maxScore;
 }
@@ -21,9 +28,6 @@ function randomisation(data_list){
     return data_list[random_img]
 }
 
-// Add the method of High Score ... while only eqach rounds... of wrong game...
-// can also make it add a backend technology or "LocalStorage" of browser to store user's Highest score... ???
-// How to rain confetti after each successfull submission...
 
 function addBtnClick_check(){
 
@@ -48,9 +52,10 @@ function play_music_animation_btn(songName){  // play song functionality (built-
     $(`#${songName}`).addClass("pressed")
     setTimeout(()=> {
         $(`#${songName}`).removeClass("pressed")
-    }, 180) // after 180 milli seconds, pressed class will be removed.
+    }, 180)
 
 }
+
 
 function for_auto_btn_clicks(songName){
 
@@ -91,8 +96,10 @@ function update_level(){  // if user_array == computer_array (increase level, pi
         $("#level-title").append("<span class='level-plus-little'>+</span>")
     }
     
+    // $("#congratulate_winner").remove()
+    $("#congratulate_winner").text(``)
     choose_random_btn()
-    // $(document).off("keydown")
+    $(document).off("keydown")
     user = []
     $(".container .btn").removeClass("btn-disabled-style")
     // $(".container .btn").on("click", addBtnClick_check)
@@ -113,10 +120,10 @@ function end_game_work(){  // end the game when patterns are incorrect
     $("h1").text("Game Over. Try again! ♾️")
 
     // before updating max_score
-    // if (current_level > max_score){
-    //     $("#congratulate_winner").html("<h2>congratulations! 🎉 New highest record! 🥳</h2>")
-    //     console.log("CONGRATULATIONS 🎉🎉🎉🎉") // This code runs, but problem is in display
-    // }
+    if (current_level > max_score){
+        $("#congratulate_winner").html("<h2>congratulations! 🎉 New highest record! 🥳</h2>")
+        console.log("CONGRATULATIONS 🎉🎉🎉🎉") // This code runs, but problem is in display
+    }
 
     // console.log(`Current_level BEFORE: ${current_level}`)
     // console.log(`max_score BEFORE: ${max_score}`)
@@ -141,8 +148,12 @@ function end_game_work(){  // end the game when patterns are incorrect
         $("#start-btn").fadeIn()
         $("#img-value").slideDown()
     }, 380)
-
 }
+
+
+
+
+
 
 
 // as soon as the user has started to click the buttons... start checking 
@@ -170,6 +181,7 @@ function check_pattern(){
         // $(".container .btn").removeClass("btn-disabled-style")
         update_level()
     }
+    
 }
         
 
@@ -178,13 +190,14 @@ function check_pattern(){
 
 
 $(".container .btn").addClass("btn-disabled-style") // add the btn-disabled-class
-$("#high_score_div").html(`<h2>Highest Level: 0</h2>`)
+$("#high_score_div").html(`<h2>Highest Level: ${max_score}</h2>`)
+
 
 const keydownHandler = () => {  // what to do when the game starts
 
     setTimeout(()=> {
         $("#start-btn").fadeOut()
-        // $("#start-btn").off("click")
+       
         $("#img-value").slideUp()
     }, 500)
 
@@ -195,5 +208,62 @@ const keydownHandler = () => {  // what to do when the game starts
     }, 700)
 }
 
-$("#start-btn").on("click", keydownHandler)
-// $("#congratulate_winner").html("<h2>congratulations! 🎉 New highest record! 🥳</h2>")
+// $("#start-btn").on("click", keydownHandler)
+
+
+let player_nameFromLocalStorage = localStorage.getItem("player_name")
+console.log(`player_nameFromLocalStorage: ${player_nameFromLocalStorage}`)
+
+
+
+
+if (!player_nameFromLocalStorage){
+    $("#start-btn").html("Enter your name... <i class='fa-solid fa-bounce fa-lg'>🚀</i>")
+    $("#start-btn").on("click", get_user_name)
+}
+
+function get_user_name(){ 
+
+    if (player_nameFromLocalStorage){  // why it's not falsy, since it's undefined...
+        welcome_user(player_nameFromLocalStorage)
+        $("#start-btn").on("click", keydownHandler)
+        // console.log("I am calling start btn from player_nameFromLocalStorage")
+    }else {
+        setTimeout(()=> {
+            let playerName = prompt("what is your name ❓")
+            console.log(`player name: ${playerName} and length: ${playerName.length}`)
+
+            if (playerName.length > 0 && playerName != null && playerName != undefined){
+
+                if (playerName.length > 25){  // MAKE IT ONLY 25 character's long
+                    playerName = playerName.slice(0, 25)
+                }
+                localStorage.setItem("player_name", playerName) 
+                // console.log(`max_score from else block: ${max_score}`)
+                localStorage.setItem("max_level", 0) // this will be string
+                welcome_user(playerName) 
+                player_nameFromLocalStorage = playerName
+                $("#start-btn").html("Start <i class='fa-solid fa-bounce fa-lg'>🚀</i>")
+                $("#start-btn").on("click", keydownHandler)
+                // console.log("I am calling start btn from playerName")
+            }
+        }, 900)
+    }
+}
+
+get_user_name()
+    
+    
+
+function welcome_user(player){
+
+    console.log(`player name: ${player} and length: ${player.length}`)
+    $("h1").text(`welcome ${player}`)
+    $("#user_name").html(`<h2>${player}'s</h2>`)
+}
+
+// Also set highest score in `LOCALSTORAGE`
+
+// $("#congratulate_winner").text(`congratulations! 🎉 New highest record 🍾\n
+// keep going ${player_nameFromLocalStorage} !
+// `)
