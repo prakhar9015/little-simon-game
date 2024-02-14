@@ -154,6 +154,7 @@ function end_game_work(){
         $("#start-btn").fadeIn()
         $("#img-value").slideDown()
         $("#refresh-img").fadeIn()
+        $("#settings").fadeIn()
     }, 380)
 }
 
@@ -193,6 +194,8 @@ const keydownHandler = () => {
         $("#start-btn").fadeOut()
         $("#img-value").slideUp()
         $("#refresh-img").fadeOut()
+        $("#settings").fadeOut()
+        $("#settings-content").slideUp()
     }, 500)
 
     setTimeout(()=>{
@@ -269,7 +272,14 @@ $("#refresh-img").on("click", function() {
 $("#settings").on("click", ()=> {
 
     if (player_nameFromLocalStorage){
-        $("#settings-i").toggleClass("fa-spin")
+        // $("#settings-i").toggleClass("fa-spin")
+
+        $("#settings-i").addClass("fa-spin")
+
+        setTimeout(()=> {
+            $("#settings-i").removeClass("fa-spin")
+        }, 700)
+
         $("#settings-content").slideToggle()
     }else {
         alert(" 🪧 To use this feature, you must enter your name first...")
