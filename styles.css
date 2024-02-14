@@ -3,6 +3,60 @@ body {
   background-color: #011F3F;
 }
 
+#settings {
+  position: absolute;
+  left: 90%;
+  top: 5rem;
+}
+
+#update-name {
+  background-color: #FDB9FC;
+	color: #E900FF;
+  padding: 12px;
+	font-size: 20px;
+	font-weight: bold;
+	border: none;
+	border-radius: 10px;
+}
+
+#update-name:hover{
+  color: #fff;
+  background-color: #E900FF;
+}
+
+#reset-score {
+  background-color: #A076F9;
+	color: #fff;
+  padding: 12px;
+	font-size: 20px;
+	font-weight: bold;
+	border: none;
+	border-radius: 10px;
+}
+
+#reset-score:hover{
+  color: #A076F9;
+  background-color: #fff;
+}
+
+
+
+#settings-content {
+  background-color: #F1EAFF;
+  /* border: 3px solid blue; */
+  max-width: 20%; 
+  margin: auto; /* This makes the element aloign in center*/
+}
+
+#settings-content p {
+  background-color: lightblue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* #update-name {
+
+} */
+
 #img-position {
   position: absolute;
   left: 75%;
@@ -22,7 +76,6 @@ body {
 	font-size: 16px;
   border-radius: 10px;
   border: none;
- 
 }
 
 #refresh-img:hover{

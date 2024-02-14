@@ -261,3 +261,37 @@ function welcome_user(player){
 $("#refresh-img").on("click", function() {
     $("#img-value").attr("src", `images/${randomisation(img_list)}`)
 })
+
+$("#settings").on("click", ()=> {
+    $("#settings-i").toggleClass("fa-spin")
+    $("#settings-content").slideToggle()
+})
+
+$("#update-name").on("click", ()=> {
+    let new_name = prompt("what is your new name ❓")
+
+    if (new_name.length > 0 && new_name != null && new_name != undefined){
+
+        if (new_name.length > 25){  // MAKE IT ONLY 25 character's long
+            new_name = new_name.slice(0, 25)
+        }
+        localStorage.setItem("player_name", new_name) 
+        alert("Name successfully updated ✅")
+        welcome_user(new_name) 
+        $("#user_name").html(`<h2>${new_name}'s</h2>`)
+    }
+})
+
+$("#reset-score").on("click", ()=> {
+    let reset = prompt(`Are you sure, you wanna reset the level ❓\n
+    Type 'yes' or 'no'
+    `).toLowerCase()
+
+    if (reset == "yes"){
+        localStorage.setItem("max_level", 0)
+        alert("Level set to 0 ✅")
+        $("#high_score_div").html(`<h2>Highest Level: 0</h2>`)
+    }
+})
+
+$("#settings-content").hide()
