@@ -1,5 +1,6 @@
 // How to rain confetti after each successfull submission...
 
+
 let current_level = 1
 let user = []
 let computer = []
@@ -62,11 +63,10 @@ function for_auto_btn_clicks(songName){
 
 
 // How computer chooses a button randomly, from the list of colors
-function choose_random_btn(){  // computer choosing a random btn
+function choose_random_btn(){  
 
     let btn_list = ["red", "green", "yellow", "blue"]
     let random_choice = Math.floor(Math.random() * btn_list.length)
-
     let random_btn = btn_list[random_choice]
 
     setTimeout(()=> {
@@ -80,7 +80,7 @@ function choose_random_btn(){  // computer choosing a random btn
 
 
 // If user_pattern == computer_pattern, then increase the level, and add animations
-function update_level(){  // if user_array == computer_array (increase level, pick a random btn)
+function update_level(){  
     if (current_level > 1){
         $("#level-title").append("<span class='level-plus-big '>+</span>")
         $("#level-title").append("<span class='level-plus-little'>+</span>")
@@ -118,12 +118,12 @@ function end_game_work(){
             keep going ${player_nameFromLocalStorage} !
         `)
     }else if (current_level == max_score){
-        $("#congratulate_winner").text(` Hey ${player_nameFromLocalStorage}, you almost made it ! \n
+        $("#congratulate_winner").text(` Hey ${player_nameFromLocalStorage}, you almost made it. \n
             Try again. you're gonna make a new record ! ✨
         `)
     }else {
         $("#congratulate_winner").text(`Hey ${player_nameFromLocalStorage}, \n you're just ${max_score-current_level} 
-            points away. Work hard ! 💪
+            points away. Work hard 💪
         `)
     }
 
@@ -180,7 +180,6 @@ const keydownHandler = () => {
 
     setTimeout(()=> {
         $("#start-btn").fadeOut()
-       
         $("#img-value").slideUp()
     }, 500)
 
@@ -206,11 +205,12 @@ if (!player_nameFromLocalStorage){
 function get_user_name(){ 
 
     if (player_nameFromLocalStorage){  // why it's not falsy, since it's undefined...
+        $("#start-btn").off("click") // remove this first eventListener
         welcome_user(player_nameFromLocalStorage)
         $("#start-btn").on("click", keydownHandler)
     }else {
         setTimeout(()=> {
-            let playerName = prompt("what is your name ❓")
+            let playerName = prompt("what is your name dear player❓")
             // console.log(`player name: ${playerName} and length: ${playerName.length}`)
 
             if (playerName.length > 0 && playerName != null && playerName != undefined){
@@ -218,6 +218,7 @@ function get_user_name(){
                 if (playerName.length > 25){  // MAKE IT ONLY 25 character's long
                     playerName = playerName.slice(0, 25)
                 }
+                $("#start-btn").off("click")  // remove this first eventListener
                 localStorage.setItem("player_name", playerName) 
                 localStorage.setItem("max_level", 0) // this will be string
                 welcome_user(playerName) 
@@ -225,7 +226,7 @@ function get_user_name(){
                 $("#start-btn").html("Start <i class='fa-solid fa-bounce fa-lg'>🚀</i>")
                 $("#start-btn").on("click", keydownHandler)
             }
-        }, 900)
+        }, 700) // 900
     }
 }
 
