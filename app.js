@@ -17,7 +17,9 @@ function set_high_score(maxScore, currentScore){
 }
 
 // A list of images, to be chosen randomly
-let img_list = ["alladin.webp", "brave.jpg", "chin-up.jpg", "lion-king.png", "nemo.jpg", "try-harder.jpg"]
+let img_list = ["alladin.webp", "brave.jpg", "chin-up.jpg", "lion-king.png", "nemo.jpg", "try-harder.jpg", "right-path.jpg", 
+    "adventure-is-there.webp", "be-yourself.png", "faith-trust.jpg", "go-for-it.webp", "i-wanna-live.webp", "infinity.webp", "let-it-be.webp", "you-will-get-it.jpg"
+]
 
 // randomly choosing imgages form the list above
 function randomisation(data_list){
@@ -122,8 +124,15 @@ function end_game_work(){
             Try again. you're gonna make a new record ! ✨
         `)
     }else {
+
+        let spelling = "points";
+
+        if (max_score-current_level == 1){
+            spelling = "point"
+        }
+
         $("#congratulate_winner").text(`Hey ${player_nameFromLocalStorage}, \n you're just ${max_score-current_level} 
-            points away. Work hard 💪
+            ${spelling} away. Work hard 💪
         `)
     }
 
