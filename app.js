@@ -228,7 +228,7 @@ function get_user_name(){
         $("#start-btn").on("click", keydownHandler)
     }else {
         setTimeout(()=> {
-            let playerName = prompt("what is your name dear player❓")
+            let playerName = prompt("what is your name dear player❓").toLowerCase()
             // console.log(`player name: ${playerName} and length: ${playerName.length}`)
 
             if (playerName.length > 0 && playerName != null && playerName != undefined){
@@ -273,7 +273,6 @@ $("#settings").on("click", ()=> {
 
     if (player_nameFromLocalStorage){
         // $("#settings-i").toggleClass("fa-spin")
-
         $("#settings-i").addClass("fa-spin")
 
         setTimeout(()=> {
@@ -288,7 +287,7 @@ $("#settings").on("click", ()=> {
 
 
 $("#update-name").on("click", ()=> {
-    let new_name = prompt("what is your new name ❓")
+    let new_name = prompt("what is your new name ❓").toLowerCase()
 
     if (new_name.length > 0 && new_name != null && new_name != undefined){
 
