@@ -46,6 +46,7 @@ body {
   /* border: 3px solid blue; */
   max-width: 20%; 
   margin: auto; /* This makes the element aloign in center*/
+  border-radius: 10px;
 }
 
 #settings-content p {
