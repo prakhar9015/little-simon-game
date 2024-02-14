@@ -328,7 +328,7 @@ $("#reset-score").on("click", ()=> {
 $("#delete-user-data").on("click", ()=> {
     let sure = prompt(`Hey ${player_nameFromLocalStorage}, Are you sure, you wanna delete your info ❓
     ⚠️ It will delete your name, and 
-    highest level you've achieved so far...
+    the highest level you've achieved so far...
     
     please type "delete" to proceed...
     `).toLowerCase()
@@ -345,6 +345,12 @@ $("#delete-user-data").on("click", ()=> {
 
         $("#settings-content").slideUp()
         $("#settings").fadeOut()
+        $("h1").text(`see you in the funny papers...`)
+        setTimeout(()=> {
+            $("#user_name").fadeOut()
+            $("#high_score_div").html(`<h2>Highest Level: 0</h2>`)
+
+        }, 900)
     }
 
 
