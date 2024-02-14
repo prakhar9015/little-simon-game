@@ -34,10 +34,26 @@ body {
 	border-radius: 10px;
 }
 
-#reset-score:hover{
+#reset-score:hover {
   color: #A076F9;
   background-color: #fff;
 }
+
+#delete-user-data {
+  background-color: #FF9F9F;
+  color: red;
+  padding: 8px;
+  font-size: 18px;
+	/* font-weight: bold; */
+	border: none;
+	border-radius: 10px;
+}
+
+#delete-user-data:hover {
+  color: #fff;
+  background-color: red;
+}
+
 
 
 

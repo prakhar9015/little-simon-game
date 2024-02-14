@@ -25,7 +25,7 @@ function set_high_score(maxScore, currentScore){
 // A list of images, to be chosen randomly
 let img_list = ["alladin.webp", "brave.jpg", "chin-up.jpg", "lion-king.png", "nemo.jpg", "try-harder.jpg", "right-path.jpg", 
     "adventure-is-there.webp", "be-yourself.png", "faith-trust.jpg", "go-for-it.webp", "i-wanna-live.webp", "infinity.webp", "let-it-be.webp", "you-will-get-it.jpg",
-    "fly-higher.webp", "silencio-bruno.jpg", "valuable-identity.webp"
+    "fly-higher.webp", "silencio-bruno.jpg"
 ]
 
 // randomly choosing imgages form the list above
@@ -305,7 +305,8 @@ $("#update-name").on("click", ()=> {
 $("#reset-score").on("click", ()=> {
 
     if (max_score > 6){
-        let reset = prompt(`Are you sure, you wanna reset the level ❓\n
+        let reset = prompt(`Are you sure, you wanna reset the level ❓
+
         Type 'yes' to proceed...
         `).toLowerCase()
     
@@ -321,6 +322,33 @@ $("#reset-score").on("click", ()=> {
         `)
     }
 
+})
+
+
+$("#delete-user-data").on("click", ()=> {
+    let sure = prompt(`Hey ${player_nameFromLocalStorage}, Are you sure, you wanna delete your info ❓
+    ⚠️ It will delete your name, and 
+    highest level you've achieved so far...
+    
+    please type "delete" to proceed...
+    `).toLowerCase()
+
+    if (sure == "delete"){
+        localStorage.clear()
+        alert("Successfully deleted ✅ \n come back soon...")
+
+        $("#start-btn").html("Refresh the page... <i class='fa-solid fa-spin fa-lg'>🔃</i>")
+
+        $("#start-btn").on("click", ()=> {
+            location.reload(true) // to refresh the page in js...
+        })
+
+        $("#settings-content").slideUp()
+        $("#settings").fadeOut()
+    }
+
+
+    
 })
 
 $("#settings-content").hide()
