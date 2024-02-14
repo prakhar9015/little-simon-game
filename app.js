@@ -346,7 +346,7 @@ $("#delete-user-data").on("click", ()=> {
         setTimeout(()=> {
             $("#user_name").fadeOut()
             $("#high_score_div").html(`<h2>Highest Level: 0</h2>`)
-
+            $("#congratulate_winner").fadeOut()
         }, 900)
     }
 
