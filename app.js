@@ -4,7 +4,14 @@ let current_level = 1
 let user = []
 let computer = []
 
-let max_score = Number(localStorage.getItem("max_level")) // don't touch this variable again ever...
+// let max_score = Number(localStorage.getItem("max_level")) // don't touch this variable again ever...
+
+function find_max_level(){
+    return Number(localStorage.getItem("max_level"));
+}
+
+let max_score = find_max_level()
+
 
 // This function checks, for maximum score from current level
 function set_high_score(maxScore, currentScore){
@@ -115,23 +122,28 @@ function end_game_work(){
     $("#current_score_div").text(`Current level: ${current_level}`)
 
     // made this feedback message more dynamic... and encouraging!
+
+    let current_player_name = localStorage.getItem("player_name");
+    // let current_max_score = Number(localStorage.getItem("max_level"))
+
     if (current_level > max_score){
         $("#congratulate_winner").text(`congratulations! 🎉 New highest record 🍾 \n
-            keep going ${player_nameFromLocalStorage} !
+            keep going ${current_player_name} !
         `)
     }else if (current_level == max_score){
-        $("#congratulate_winner").text(` Hey ${player_nameFromLocalStorage}, you almost made it. \n
+        $("#congratulate_winner").text(` Hey ${current_player_name}, you almost made it. \n
             Try again. you're gonna make a new record ! ✨
         `)
+    
     }else {
-
+        // let current_max_score = Number(localStorage.getItem("max_level"))
         let spelling = "points";
 
         if (max_score-current_level == 1){
             spelling = "point"
         }
 
-        $("#congratulate_winner").text(`Hey ${player_nameFromLocalStorage}, \n you're just ${max_score-current_level} 
+        $("#congratulate_winner").text(`Hey ${current_player_name}, \n you're just ${max_score-current_level} 
             ${spelling} away. Work hard 💪
         `)
     }
@@ -139,6 +151,7 @@ function end_game_work(){
     // Update the max_score variable using the set_high_score function
     max_score = set_high_score(max_score, current_level);
 
+    // let current_max_score = Number(localStorage.getItem("max_level"))
     $("#high_score_div").html(`<h2>Highest Level:  ${max_score}</h2>`)
 
     computer = []
@@ -288,16 +301,26 @@ $("#update-name").on("click", ()=> {
     }
 })
 
+// ⚠️ This should only work when you're over level 9 ⚠️
 $("#reset-score").on("click", ()=> {
-    let reset = prompt(`Are you sure, you wanna reset the level ❓\n
-    Type 'yes' or 'no'
-    `).toLowerCase()
 
-    if (reset == "yes"){
-        localStorage.setItem("max_level", 0)
-        alert("Level set to 0 ✅")
-        $("#high_score_div").html(`<h2>Highest Level: 0</h2>`)
+    if (max_score > 6){
+        let reset = prompt(`Are you sure, you wanna reset the level ❓\n
+        Type 'yes' to proceed...
+        `).toLowerCase()
+    
+        if (reset == "yes"){
+            localStorage.setItem("max_level", 0)
+            max_score = 0 // this is very important to ensure, that max_score when set works fine.
+            alert("Level set to 0 ✅")
+            $("#high_score_div").html(`<h2>Highest Level: 0</h2>`)
+        }
+    }else {
+        alert(`${player_nameFromLocalStorage}, you can only access this feature once you're above level 6.
+            Good luck! and keep it up 🚀
+        `)
     }
+
 })
 
 $("#settings-content").hide()
