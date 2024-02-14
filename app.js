@@ -262,10 +262,20 @@ $("#refresh-img").on("click", function() {
     $("#img-value").attr("src", `images/${randomisation(img_list)}`)
 })
 
+
+// The only problem with this settings, is that... it should only work, when user already has created 
+// name and level (only name field... it should only work in that case...)
+
 $("#settings").on("click", ()=> {
-    $("#settings-i").toggleClass("fa-spin")
-    $("#settings-content").slideToggle()
+
+    if (player_nameFromLocalStorage){
+        $("#settings-i").toggleClass("fa-spin")
+        $("#settings-content").slideToggle()
+    }else {
+        alert(" 🪧 To use this feature, you must enter your name first...")
+    }
 })
+
 
 $("#update-name").on("click", ()=> {
     let new_name = prompt("what is your new name ❓")
