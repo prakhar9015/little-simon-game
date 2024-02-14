@@ -1,6 +1,5 @@
 // How to rain confetti after each successfull submission...
 
-
 let current_level = 1
 let user = []
 let computer = []
@@ -206,15 +205,12 @@ const keydownHandler = () => {
 }
 
 let player_nameFromLocalStorage = localStorage.getItem("player_name")
-// console.log(`player_nameFromLocalStorage: ${player_nameFromLocalStorage}`)
 
-
-// If player name is noyt found in localstorage, then switch the btn to `enter your name`
+// If player name is not found in localstorage, then switch the btn to `enter your name`
 if (!player_nameFromLocalStorage){
     $("#start-btn").html("Enter your name... <i class='fa-solid fa-bounce fa-lg'>🚀</i>")
     $("#start-btn").on("click", get_user_name)
 }
-
 
 
 // This function checks for userName in localstorage, if not found, then asks it 
@@ -229,7 +225,6 @@ function get_user_name(){
     }else {
         setTimeout(()=> {
             let playerName = prompt("what is your name dear player❓").toLowerCase()
-            // console.log(`player name: ${playerName} and length: ${playerName.length}`)
 
             if (playerName.length > 0 && playerName != null && playerName != undefined){
 
@@ -251,23 +246,16 @@ function get_user_name(){
 get_user_name()  // calling this function as soon as the game starts 
 
 
-// This function, welcomes the user, when the game starts or they create their profile for 1st time.
+// This function, welcomes the user, when the game starts or they create /updates their profile .
 function welcome_user(player){
     $("h1").text(`welcome ${player}`)
     $("#user_name").html(`<h2>${player}'s</h2>`)
 }
 
-// $("#congratulate_winner").text(`congratulations! 🎉 New highest record 🍾\n
-// keep going ${player_nameFromLocalStorage} !
-// `)
 
 $("#refresh-img").on("click", function() {
     $("#img-value").attr("src", `images/${randomisation(img_list)}`)
 })
-
-
-// The only problem with this settings, is that... it should only work, when user already has created 
-// name and level (only name field... it should only work in that case...)
 
 $("#settings").on("click", ()=> {
 
@@ -284,7 +272,6 @@ $("#settings").on("click", ()=> {
         alert(" 🪧 To use this feature, you must enter your name first...")
     }
 })
-
 
 $("#update-name").on("click", ()=> {
     let new_name = prompt("what is your new name ❓").toLowerCase()
