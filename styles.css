@@ -15,7 +15,9 @@ body {
 }
 
 #refresh-img {
-  color: #793FDF;
+  /* color: #793FDF; */
+  background-color: #793FDF;
+  color: #fff;
   padding: 8px;
 	font-size: 16px;
   border-radius: 10px;
@@ -24,8 +26,8 @@ body {
 }
 
 #refresh-img:hover{
-  background-color: #793FDF;
-  color: white;
+  color: #793FDF;
+  background-color: white;
 }
 
 
@@ -156,4 +158,21 @@ body {
   box-shadow: 0 0 20px white;
   background-color: grey;
   border: 10px solid #E900FF;
+}
+
+footer {
+  margin-top: 3.9rem;
+  /* color: #F9F5F6; */
+  color: #E3F4F4;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+footer a {
+  /* font-family: cursive; */
+  text-decoration: none;
+  color: #0079FF;
+}
+
+footer a:hover{
+  text-decoration: underline;
 }
