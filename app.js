@@ -18,7 +18,8 @@ function set_high_score(maxScore, currentScore){
 
 // A list of images, to be chosen randomly
 let img_list = ["alladin.webp", "brave.jpg", "chin-up.jpg", "lion-king.png", "nemo.jpg", "try-harder.jpg", "right-path.jpg", 
-    "adventure-is-there.webp", "be-yourself.png", "faith-trust.jpg", "go-for-it.webp", "i-wanna-live.webp", "infinity.webp", "let-it-be.webp", "you-will-get-it.jpg"
+    "adventure-is-there.webp", "be-yourself.png", "faith-trust.jpg", "go-for-it.webp", "i-wanna-live.webp", "infinity.webp", "let-it-be.webp", "you-will-get-it.jpg",
+    "fly-higher.webp", "silencio-bruno.jpg", "valuable-identity.webp"
 ]
 
 // randomly choosing imgages form the list above
@@ -152,6 +153,7 @@ function end_game_work(){
     setTimeout(()=>{
         $("#start-btn").fadeIn()
         $("#img-value").slideDown()
+        $("#refresh-img").fadeIn()
     }, 380)
 }
 
@@ -190,6 +192,7 @@ const keydownHandler = () => {
     setTimeout(()=> {
         $("#start-btn").fadeOut()
         $("#img-value").slideUp()
+        $("#refresh-img").fadeOut()
     }, 500)
 
     setTimeout(()=>{
@@ -210,8 +213,11 @@ if (!player_nameFromLocalStorage){
 }
 
 
+
 // This function checks for userName in localstorage, if not found, then asks it 
-function get_user_name(){ 
+function get_user_name(){
+    
+    $("#img-value").attr("src", `images/${randomisation(img_list)}`)
 
     if (player_nameFromLocalStorage){  // why it's not falsy, since it's undefined...
         $("#start-btn").off("click") // remove this first eventListener
@@ -251,3 +257,7 @@ function welcome_user(player){
 // $("#congratulate_winner").text(`congratulations! 🎉 New highest record 🍾\n
 // keep going ${player_nameFromLocalStorage} !
 // `)
+
+$("#refresh-img").on("click", function() {
+    $("#img-value").attr("src", `images/${randomisation(img_list)}`)
+})

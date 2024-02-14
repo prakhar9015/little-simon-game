@@ -3,12 +3,31 @@ body {
   background-color: #011F3F;
 }
 
-#img-value {
+#img-position {
   position: absolute;
   left: 75%;
   top: 10rem;
-  width: 290px;
 }
+
+#img-value {
+  width: 290px;
+  margin-bottom: 1rem;
+}
+
+#refresh-img {
+  color: #793FDF;
+  padding: 8px;
+	font-size: 16px;
+  border-radius: 10px;
+  border: none;
+ 
+}
+
+#refresh-img:hover{
+  background-color: #793FDF;
+  color: white;
+}
+
 
 #congratulate_winner {
   /* max-width: 50%; */
