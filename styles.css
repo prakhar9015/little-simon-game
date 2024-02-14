@@ -3,7 +3,6 @@ body {
   background-color: #011F3F;
 }
 
-
 #img-value {
   position: absolute;
   left: 75%;
@@ -12,6 +11,7 @@ body {
 }
 
 #congratulate_winner {
+  /* max-width: 50%; */
   position: absolute;
   right: 66%;
   top: 10rem;
@@ -43,33 +43,26 @@ body {
   color: #fff;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: #ED50F1;
-  /*  */
 }
-
 
 #start-btn {
   position: absolute;
   right: 82%;
   top: 30rem;
-  
-	/* box-shadow: 0 0 15px 0 #f273e6; */
-	background-color: whitesmoke;
+  background-color: whitesmoke;
 	color: #793FDF;
 	padding: 12px;
 	font-size: 20px;
 	font-weight: bold;
 	border: none;
 	border-radius: 10px;
-  /* font-family: cursive; */
 }
 
 #start-btn:hover {
 	background-color: #793FDF;
 	color: white;
-
 	box-shadow: none;
 }
-
 
 #level-title {
   font-family: 'Press Start 2P', cursive;
@@ -86,7 +79,6 @@ body {
   color: #16FF00;
 }
 
-
 .level-plus-little {
   font-family: 'Press Start 2P', cursive;
   font-size: 1.3rem;
@@ -94,7 +86,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
 
 .container {
   display: block;
@@ -137,13 +128,10 @@ body {
   background-color: grey;
 }
 
-
-/* Add a style for the disabled state */
 .btn-disabled-style {
-  opacity: 0.5; /* Adjust the styling as needed */
+  opacity: 0.5; 
   pointer-events: none; /* Disable pointer events */
 }
-
 
 .auto-btn{
   box-shadow: 0 0 20px white;
