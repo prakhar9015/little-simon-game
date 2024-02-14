@@ -124,7 +124,6 @@ function end_game_work(){
     // made this feedback message more dynamic... and encouraging!
 
     let current_player_name = localStorage.getItem("player_name");
-    // let current_max_score = Number(localStorage.getItem("max_level"))
 
     if (current_level > max_score){
         $("#congratulate_winner").text(`congratulations! 🎉 New highest record 🍾 \n
@@ -136,7 +135,6 @@ function end_game_work(){
         `)
     
     }else {
-        // let current_max_score = Number(localStorage.getItem("max_level"))
         let spelling = "points";
 
         if (max_score-current_level == 1){
@@ -151,7 +149,6 @@ function end_game_work(){
     // Update the max_score variable using the set_high_score function
     max_score = set_high_score(max_score, current_level);
 
-    // let current_max_score = Number(localStorage.getItem("max_level"))
     $("#high_score_div").html(`<h2>Highest Level:  ${max_score}</h2>`)
 
     computer = []
