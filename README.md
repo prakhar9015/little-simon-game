@@ -13,7 +13,7 @@ by <a href="https://github.com/angelabauer">Dr. Angela Yu</a> .
 
 <li> It has a nice little settings button ⚙️, which you can use to customize your game experience 🔥 </li>
 
-<li> Random motivational images keeps the game going 😎 </li>
+<li> Random motivational images keeps the game going 😇 </li>
 
 </ul>
 
