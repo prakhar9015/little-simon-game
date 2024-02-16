@@ -21,10 +21,10 @@ by <a href="https://github.com/angelabauer">Dr. Angela Yu</a> .
 <h2> Here are some of the images 👇 </h2>
 
 <ul>
-<li> <img src="display-img/simon-photo-1.jpeg" width="500px"/> </li>
-<li> <img src="display-img/simon-photo-2.jpeg" width="500px"/> </li>
-<li> <img src="display-img/simon-photo-3.jpeg" width="500px"/> </li>
-<li> <img src="display-img/simon-photo-4.jpeg" width="500px"/> </li>
+<li> <img src="display-img/simon-photo-1.jpeg" width="580px"/> </li>
+<li> <img src="display-img/simon-photo-2.jpeg" width="580px"/> </li>
+<li> <img src="display-img/simon-photo-3.jpeg" width="580px"/> </li>
+<li> <img src="display-img/simon-photo-4.jpeg" width="580px"/> </li>
  </ul>
 
 <p> Any feedback is welcome 😀 🙏 ...</p>
