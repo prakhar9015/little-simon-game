@@ -1,12 +1,38 @@
 body {
   text-align: center;
   background-color: #011F3F;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input[type="checkbox"] {
+  /* Increase size */
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
 }
 
 #settings {
   position: absolute;
   left: 90%;
   top: 5rem;
+}
+
+#settings-content {
+  background-color: #F1EAFF;
+  max-width: 20%; 
+  margin: auto; /* This makes the element align in center*/
+  border-radius: 10px;
+}
+
+
+#settings-content button {
+  margin: 1rem auto;
+  display: block;
+}
+
+#settings-content p {
+  background-color: lightblue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #update-name {
@@ -44,7 +70,6 @@ body {
   color: red;
   padding: 8px;
   font-size: 18px;
-	/* font-weight: bold; */
 	border: none;
 	border-radius: 10px;
 }
@@ -53,26 +78,6 @@ body {
   color: #fff;
   background-color: red;
 }
-
-
-
-
-#settings-content {
-  background-color: #F1EAFF;
-  /* border: 3px solid blue; */
-  max-width: 20%; 
-  margin: auto; /* This makes the element aloign in center*/
-  border-radius: 10px;
-}
-
-#settings-content p {
-  background-color: lightblue;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-/* #update-name {
-
-} */
 
 #img-position {
   position: absolute;
@@ -86,7 +91,6 @@ body {
 }
 
 #refresh-img {
-  /* color: #793FDF; */
   background-color: #793FDF;
   color: #fff;
   padding: 8px;
@@ -232,13 +236,11 @@ body {
 
 footer {
   margin-top: 3.9rem;
-  /* color: #F9F5F6; */
   color: #E3F4F4;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 footer a {
-  /* font-family: cursive; */
   text-decoration: none;
   color: #0079FF;
 }

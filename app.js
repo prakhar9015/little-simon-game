@@ -1,16 +1,18 @@
 // How to rain confetti after each successfull submission...
 
+// Needs Code Refactoring...
+
 let current_level = 1
 let user = []
 let computer = []
-
-// let max_score = Number(localStorage.getItem("max_level")) // don't touch this variable again ever...
 
 function find_max_level(){
     return Number(localStorage.getItem("max_level"));
 }
 
 let max_score = find_max_level()
+
+let need_refresh_btn = localStorage.getItem("refresh-img-btn")
 
 
 // This function checks, for maximum score from current level
@@ -162,7 +164,11 @@ function end_game_work(){
     setTimeout(()=>{
         $("#start-btn").fadeIn()
         $("#img-value").slideDown()
-        $("#refresh-img").fadeIn()
+
+        // console.log(`need refresh-btn-from-end-work: ${need_refresh_btn}`)
+        if (need_refresh_btn === "true"){
+            $("#refresh-img").fadeIn()
+        }
         $("#settings").fadeIn()
     }, 380)
 }
@@ -322,6 +328,7 @@ $("#reset-score").on("click", ()=> {
 })
 
 
+// This checks the "delete" value, and then deletes the data and add animations
 $("#delete-user-data").on("click", ()=> {
     let sure = prompt(`Hey ${player_nameFromLocalStorage}, Are you sure, you wanna delete your info ❓
     ⚠️ It will delete your name, and 
@@ -349,9 +356,36 @@ $("#delete-user-data").on("click", ()=> {
             $("#congratulate_winner").fadeOut()
         }, 900)
     }
-
-
-    
 })
 
-$("#settings-content").hide()
+$("#settings-content").hide()  // Initially, hide this info
+
+
+const storedValue = localStorage.getItem("refresh-img-btn");
+if (storedValue === "true") {
+  $("#myCheckbox").prop("checked", true);
+  $("#refresh-img").slideDown();
+} else {
+  $("#myCheckbox").prop("checked", false);
+  $("#refresh-img").slideUp();
+}
+
+
+
+$("#myCheckbox").on("change", function() {
+    if (this.checked){
+        // console.log(`It is checked ✅`)
+        localStorage.setItem("refresh-img-btn", true)
+        $("#refresh-img").slideDown()
+        // console.log(`is refesh btn ??? ${storedValue}`)
+        need_refresh_btn = "true"
+
+    }else {
+        // console.log(`It is not checked ❌`)
+        localStorage.setItem("refresh-img-btn", false)
+        $("#refresh-img").slideUp()
+        // console.log(`is refesh btn ??? ${storedValue}`)
+        need_refresh_btn = "false"
+
+    }
+})
