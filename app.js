@@ -165,7 +165,6 @@ function end_game_work(){
         $("#start-btn").fadeIn()
         $("#img-value").slideDown()
 
-        // console.log(`need refresh-btn-from-end-work: ${need_refresh_btn}`)
         if (need_refresh_btn === "true"){
             $("#refresh-img").fadeIn()
         }
@@ -281,7 +280,7 @@ $("#settings").on("click", ()=> {
 
         setTimeout(()=> {
             $("#settings-i").removeClass("fa-spin")
-        }, 700)
+        }, 600)
 
         $("#settings-content").slideToggle()
     }else {

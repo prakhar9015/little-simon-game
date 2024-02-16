@@ -4,11 +4,27 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-input[type="checkbox"] {
-  /* Increase size */
-  width: 25px;
-  height: 25px;
-  margin-right: 5px;
+#level-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2.2rem;
+  margin:  3%;
+  color: #FEF2BF;
+}
+
+.level-plus-big {
+  margin: 4px;
+  padding: 0;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2.2rem;
+  color: #16FF00;
+}
+
+.level-plus-little {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.3rem;
+  color: #16FF00;
+  margin: 0;
+  padding: 0;
 }
 
 #settings {
@@ -65,6 +81,13 @@ input[type="checkbox"] {
   background-color: #fff;
 }
 
+input[type="checkbox"] {
+  /* Increase size */
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
 #delete-user-data {
   background-color: #FF9F9F;
   color: red;
@@ -77,6 +100,62 @@ input[type="checkbox"] {
 #delete-user-data:hover {
   color: #fff;
   background-color: red;
+}
+
+#congratulate_winner {
+  /* max-width: 50%; */
+  position: absolute;
+  right: 66%;
+  top: 10rem;
+  color:#F806CC;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+#current_score_div {
+  position: absolute;
+  right: 80%;
+  top: 24rem;
+  color: #fff;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #ED50F1;
+}
+
+
+#user_name {
+  color: #9400FF;
+  position: absolute;
+  right: 80%;
+  top: 18.5rem;
+  font: bold;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+#high_score_div {
+  position: absolute;
+  right: 80%;
+  top: 21rem;
+  color: #fff;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+#start-btn {
+  position: absolute;
+  right: 82%;
+  top: 30rem;
+  background-color: whitesmoke;
+	color: #793FDF;
+	padding: 12px;
+	font-size: 20px;
+	font-weight: bold;
+	border: none;
+	border-radius: 10px;
+}
+
+#start-btn:hover {
+	background-color: #793FDF;
+	color: white;
+	box-shadow: none;
 }
 
 #img-position {
@@ -104,83 +183,6 @@ input[type="checkbox"] {
   background-color: white;
 }
 
-
-#congratulate_winner {
-  /* max-width: 50%; */
-  position: absolute;
-  right: 66%;
-  top: 10rem;
-  color:#F806CC;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-}
-
-#user_name {
-  color: #9400FF;
-  position: absolute;
-  right: 80%;
-  top: 18.5rem;
-  font: bold;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-}
-
-#high_score_div {
-  position: absolute;
-  right: 80%;
-  top: 21rem;
-  color: #fff;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-#current_score_div {
-  position: absolute;
-  right: 80%;
-  top: 24rem;
-  color: #fff;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: #ED50F1;
-}
-
-#start-btn {
-  position: absolute;
-  right: 82%;
-  top: 30rem;
-  background-color: whitesmoke;
-	color: #793FDF;
-	padding: 12px;
-	font-size: 20px;
-	font-weight: bold;
-	border: none;
-	border-radius: 10px;
-}
-
-#start-btn:hover {
-	background-color: #793FDF;
-	color: white;
-	box-shadow: none;
-}
-
-#level-title {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 2.2rem;
-  margin:  3%;
-  color: #FEF2BF;
-}
-
-.level-plus-big {
-  margin: 4px;
-  padding: 0;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 2.2rem;
-  color: #16FF00;
-}
-
-.level-plus-little {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 1.3rem;
-  color: #16FF00;
-  margin: 0;
-  padding: 0;
-}
 
 .container {
   display: block;
@@ -247,4 +249,32 @@ footer a {
 
 footer a:hover{
   text-decoration: underline;
+}
+
+/*  ---------------------------------------------- */
+
+
+@media (max-width: 989px){
+
+  /* Remove the image right now */
+  #img-position {
+    display: none;
+  }
+
+  .container {
+    display: block;
+    width: 100%;
+    margin: auto;
+  }
+  
+  /* .btn {
+    margin: 25px;
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    border: 10px solid black;
+    border-radius: 20%;
+  } */
+
+
 }
